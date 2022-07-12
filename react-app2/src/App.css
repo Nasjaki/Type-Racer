@@ -1,0 +1,96 @@
+.App {
+  text-align: center;
+}
+
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: top;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+
+
+.form {
+  justify-content: top;
+  display: flex;
+  flex-direction: column;
+}
+
+.form_nextTo{
+  justify-content: top;
+  display: flex;
+  flex-direction: row;
+}
+
+.form_window_right {
+  justify-content: right;
+  display: flex;
+  flex-direction: column-reverse;
+  width : 250px;
+}
+
+.top_bar_button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 17px;
+  border-radius: 8px;
+}
+
+.top_bar_button:hover {
+  background-color: rgb(33, 85, 33);
+  color: rgb(240, 240, 240);
+  border: 2px solid rgb(113, 113, 113);
+}
+
+.overlay_button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+.overlay_button:hover {
+  background-color: rgb(33, 85, 33);
+  color: rgb(240, 240, 240);
+  border: 2px solid rgb(113, 113, 113);
+}
+
+.invis{
+  position: absolute;
+  left:0px;
+  top:0px;
+  width: 30px;
+  height: 50px;
+}
+
+.Textbox {
+  display: flex;
+  flex-direction: column;
+}
+
+.GameInfo {
+  margin-top: 200px;
+  display: flex;
+  flex-direction: column;
+}
+

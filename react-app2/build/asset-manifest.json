@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Nasjaki/react-app.git/static/css/main.cbdd90c7.css",
+    "main.js": "/Nasjaki/react-app.git/static/js/main.6955a7ba.js",
+    "static/js/787.b701888c.chunk.js": "/Nasjaki/react-app.git/static/js/787.b701888c.chunk.js",
+    "index.html": "/Nasjaki/react-app.git/index.html",
+    "main.cbdd90c7.css.map": "/Nasjaki/react-app.git/static/css/main.cbdd90c7.css.map",
+    "main.6955a7ba.js.map": "/Nasjaki/react-app.git/static/js/main.6955a7ba.js.map",
+    "787.b701888c.chunk.js.map": "/Nasjaki/react-app.git/static/js/787.b701888c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cbdd90c7.css",
+    "static/js/main.6955a7ba.js"
+  ]
+}
