@@ -1,21 +1,16 @@
 
-import App from './App';
-import './App.css';
 
+import './App.css';
+import getPlayers from './Code/getPlayers';
+import getPlayerId from './Code/getPlayerId';
+import playerExists from './Code/playerExists';
 
 const url = "https://gruppe5.toni-barth.com/";
 
 
 async function deleteAllPlayers() {
 
-    let response = await fetch(url + "players/", {
-        method: 'GET',
-        headers: {
-            'Content-Type':'application/json',
-        }
-    });
-  
-    let json = await response.json();
+    let json = await getPlayers();
 
     var i;
     for(i in json){
@@ -34,28 +29,33 @@ async function deleteAllPlayers() {
 
 async function getPlayerInfo () {
 
-    var player_id = document.getElementById("text_player_info").value;
+    var player_name = document.getElementById("text_player_info").value;
+    var player_id = await getPlayerId(player_name);
 
-    let response = await fetch(url + "players/" + player_id, {
-        method: 'GET',
-        headers: {
-            'Content-Type':'application/json',
-        }
-    });
+    
+    if (await playerExists(player_name)) {
 
-    let json = await response.json();
-    console.log(json);
+            let response = await fetch(url + "players/" + player_id, {
+                method: 'GET',
+                headers: {
+                    'Content-Type':'application/json',
+                }
+            });
 
-    return json;
+            let json = await response.json();
+            document.getElementById("text_player_info").value = "";
+            console.log(json);
+
+            return json;
+    }
+    
 }
 
 async function newPlayer() {
 
-    var name_str = document.getElementById("text_name").value;
-    console.log(name_str);
-    
+    var name_str = document.getElementById("text_name").value; 
 
-    if (name_str.length > 0) {
+    if (name_str.length > 2) {
         try {
             let response = await fetch(url + "players/", {
                 method: 'POST',
@@ -71,12 +71,17 @@ async function newPlayer() {
 
             window.player_id = json.id;
             window.player_name = name_str;
+            console.log("player created: " + name_str);
+            
+            document.getElementById("text_name").value = "";
 
             return json;
         } catch (ex) {
             console.error(ex);
         }
-    } 
+    } else {
+        alert("Not a valid name");
+    }
 
     
 }
@@ -92,7 +97,7 @@ function Login() {
             </h1>
 
             <div className="form_nextTo">
-                <input id="text_name" type="text" placeholder="Name"></input>
+                <input id="text_name" type="text" placeholder="Name" maxLength={10}></input>
                 <button onClick={newPlayer}> Create Account </button>
             </div>
 
