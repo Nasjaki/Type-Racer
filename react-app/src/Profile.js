@@ -10,6 +10,8 @@ function Profile() {
                 Profile
             </h1>
 
+            <p> {window.player_name} {window.player_id} </p>
+
             
             
         </div>
