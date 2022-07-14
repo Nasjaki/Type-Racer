@@ -7,18 +7,19 @@ import Profile from "./Profile";
 
 import { useState } from "react";
 
+//API Link
 const url = "https://gruppe5.toni-barth.com/";
 
-
-
+//Globale Variablen
 window.player_id = 0;
 window.game_id = 0;
 window.player_name = "Profile";
 
 function App() {
 
-  
+  //State -> welche Seite gezeigt wird
   const [isToggled, setIsToggled] = useState(0);
+
   return ( 
     <div className="App">
 
@@ -36,9 +37,6 @@ function App() {
         {isToggled === 1 && <Login/>}
         {isToggled === 2 && <Game/>}
         {isToggled === 3 && <Profile/>}
-
-        
-        
 
       </div>
 

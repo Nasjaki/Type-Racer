@@ -61,6 +61,7 @@ async function newPlayer() {
     //Name länger als 2
     if (name_str.length > 2) {
         try {
+            //Fetch Funktion um Namen auf URL hochzuladen
             let response = await fetch(url + "players/", {
                 method: 'POST',
                 headers: {
@@ -73,10 +74,12 @@ async function newPlayer() {
             
             let json = await response.json();
 
+            //Festlegen der globalen Variablen
             window.player_id = json.id;
             window.player_name = name_str;
             console.log("player created: " + name_str);
             
+            //Textbox leeren
             document.getElementById("text_name").value = "";
 
             return json;
@@ -84,6 +87,7 @@ async function newPlayer() {
             console.error(ex);
         }
     } else {
+        //"Exception"
         alert("Not a valid name");
     }
 

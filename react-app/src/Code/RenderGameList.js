@@ -66,10 +66,12 @@ export default function RenderGameList() {
         <div className='RenderGameList'>
 
             <h1>active games</h1>
-
-                <ul>
-                    {activeGames.map((game) => <ActiveGames key={game.id} game_id = {game.game_id} name={game.name} />)}
-                </ul>
+        	    <div className="active_games">
+                    <ul>
+                        {activeGames.map((game) => <ActiveGames key={game.id} game_id = {game.game_id} name={game.name} />)}
+                    </ul>
+                </div>
+                
                 
                 
         </div>
