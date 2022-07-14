@@ -138,6 +138,10 @@ function GamePlay() {
                 <input id="text_words" type="text" placeholder="Ready"></input>
                 <input id = "text_typed" type = "text" onChange={e => testWord(e.target.value)}></input>
             </div>
+
+            <div className='PlayerList'>
+                
+            </div>
             
             
         </div>

@@ -2,7 +2,6 @@
   text-align: center;
 }
 
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -18,8 +17,6 @@
   color: #61dafb;
 }
 
-
-
 .form {
   justify-content: top;
   display: flex;
@@ -27,9 +24,11 @@
 }
 
 .form_nextTo{
-  justify-content: top;
+  justify-content: center;
   display: flex;
-  flex-direction: row;
+  flex-direction:row;
+  align-items:center;
+  justify-items:center;
 }
 
 .form_window_right {
@@ -49,12 +48,12 @@
   display: inline-block;
   font-size: 17px;
   border-radius: 8px;
+  margin: 5px;
 }
 
 .top_bar_button:hover {
   background-color: rgb(33, 85, 33);
   color: rgb(240, 240, 240);
-  border: 2px solid rgb(113, 113, 113);
 }
 
 .overlay_button {
@@ -67,12 +66,20 @@
   display: inline-block;
   font-size: 16px;
   border-radius: 8px;
+  margin: 5px;
 }
 
 .overlay_button:hover {
   background-color: rgb(33, 85, 33);
   color: rgb(240, 240, 240);
   border: 2px solid rgb(113, 113, 113);
+}
+
+#input_game_id{
+  border-radius: 8px;
+  width: 30%;
+  font-size: 20px;
+  padding: 12px 32px;
 }
 
 .invis{
@@ -92,5 +99,9 @@
   margin-top: 200px;
   display: flex;
   flex-direction: column;
+  align-items:center;
+  justify-items:center;
 }
-
+.GameInfo button{
+  width: 40%;
+}

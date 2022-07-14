@@ -15,7 +15,8 @@ async function joinGame() {
 
     var game_id = document.getElementById("input_game_id").value;
     
-if (game_id !== "" && gameExists(game_id) === true) {
+
+if (game_id !== "" && await gameExists(game_id) === true && window.player_id !== 0) {
     
     var player_id = window.player_id;
     //TODO game_id = 0, Game not found
@@ -42,7 +43,9 @@ if (game_id !== "" && gameExists(game_id) === true) {
 
     return true;
 } else {
-    alert("Please Enter a valid Game ID");
+    if (window.player_id === 0) {
+        alert("Please Login before joining a game.");
+    } else alert("Please Enter a valid Game ID");
     return false;
 }
 
@@ -85,14 +88,14 @@ function Game() {
 
         //play handle
         async function playHandleJoin() {
-            if (await joinGame() == true) {
+            if (await joinGame() === true) {
                 setIsToggled(1); 
             }
         }
 
         //Create handle
         async function playHandleCreate() {
-            if (await createGame() == true) {
+            if (await createGame() === true) {
                 setIsToggled(1);
             }
         }

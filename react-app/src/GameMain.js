@@ -4,12 +4,15 @@ import getGames from './Code/getGames';
 import gameExists from './Code/gameExists';
 import { useState } from 'react';
 
+import RenderClass from "./Code/RenderClass";
+
 
 const url = "https://gruppe5.toni-barth.com/";
 
 
 async function getGameInfo(game_id) {
-    var game_id = window.game_id;
+    //TODO Test
+    game_id = window.game_id;
 
     if (await gameExists(game_id)) {
         let response= await fetch(url + "games/"+game_id, {
@@ -39,9 +42,11 @@ async function deleteAllGames() {
     console.log("Cleared");
 }
 
-//Nicht möglich alleine zu spielen wow
+
 //playerId statt player zum Patchen -> falsche dokumentation
+
 function ActiveGames(props) {
+    
     return <li>Owner Name: {props.name} GameID: {props.game_id} </li>;
 }
 
@@ -59,13 +64,13 @@ function GameMain() {
             if(games[i] instanceof Object){
                 var can_add = true;
                 for(var i2 = 1; i2 < activeGames.length;i2++) {
-                    if (games[i].id == activeGames[i2].game_id) {
+                    if (games[i].id === activeGames[i2].game_id) {
                         can_add = false;
                     }
                 }
                 //Not anywhere in the list
 
-                if (can_add == true) {
+                if (can_add === true) {
                     //Doesent update in loop TODO
                     updateActiveGames(activeGames.concat({id:games[i].id,name: await getGameInfo(games[i].id).owner,game_id:games[i].id}));
                     console.log(activeGames);
@@ -74,6 +79,7 @@ function GameMain() {
         }
     
     }
+
 
     return ( 
         <div className='GameMainClass'>
@@ -87,9 +93,14 @@ function GameMain() {
 
             </div>
             
-            <ul>
-                {activeGames.map((game) => <ActiveGames key={game.id} game_id = {game.game_id} name={game.name} />)}
-            </ul>
+            <div className='ExtraRender'>
+                <ul>
+                    {activeGames.map((game) => <ActiveGames key={game.id} game_id = {game.game_id} name={game.name} />)}
+                </ul>
+
+                <RenderClass></RenderClass>
+            </div>
+            
             
         </div>
 
