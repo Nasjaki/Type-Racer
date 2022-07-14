@@ -23,24 +23,24 @@ function App() {
   return ( 
     <div className="App">
 
-        <header className="App-header">
-
-      <div className='top_bar'>
-
-        <button className = "top_bar_button" id = "button_toggle_main" onClick = {() => setIsToggled(0)}> Startpage </button>
-        <button className = "top_bar_button" id = "button_toggle_Login" onClick = {() => setIsToggled(1)}> Login </button>
-        <button className = "top_bar_button" id = "button_toggle_Game" onClick = {() => setIsToggled(2)}> Play </button>
-        <button className = 'top_bar_button' id = "button_toggle_profile" onClick={() => setIsToggled(3)}>{window.player_name} {window.player_id} </button>
+      <header className="App-header">
         
+        <div className='top_bar'>
 
-        {isToggled === 0 && <Main/>}
-        {isToggled === 1 && <Login/>}
-        {isToggled === 2 && <Game/>}
-        {isToggled === 3 && <Profile/>}
+          <button className = "top_bar_button" id = "button_toggle_main" onClick = {() => setIsToggled(0)}> Startpage </button>
+          <button className = "top_bar_button" id = "button_toggle_Login" onClick = {() => setIsToggled(1)}> Login </button>
+          <button className = "top_bar_button" id = "button_toggle_Game" onClick = {() => setIsToggled(2)}> Play </button>
+          <button className = 'top_bar_button' id = "button_toggle_profile" onClick={() => setIsToggled(3)}>{window.player_name} {window.player_id} </button>
 
-      </div>
-
-        </header>
+        </div>
+      </header>
+        
+        <body>
+            {isToggled === 0 && <Main/>}
+            {isToggled === 1 && <Login/>}
+            {isToggled === 2 && <Game/>}
+            {isToggled === 3 && <Profile/>}
+        </body>
 
         <div className='footer_container'>
           <footer>
