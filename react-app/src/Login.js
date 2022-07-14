@@ -104,15 +104,11 @@ function Login() {
                 Login to Typeracer
             </h1>
 
-            <div className="form_nextTo">
+            <div className="CreateAccount">
                 <input id="text_name" type="text" placeholder="Name" maxLength={10}></input>
                 <button onClick={newPlayer}> Create Account </button>
             </div>
-            <p></p>
-            <div className="form_nextTo">
-                <input id="text_player_info" type="text" placeholder="Player Info"></input>
-                <button onClick={getPlayerInfo}> Player Info </button>
-            </div>
+            
 
             
             

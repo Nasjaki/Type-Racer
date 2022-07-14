@@ -14,7 +14,10 @@ function Profile() {
             <p> Highscore: </p>
             <p> Best Speed: </p>
 
-            
+            <div className="form_nextTo">
+                <input id="text_player_info" type="text" placeholder="Player Info"></input>
+                <button onClick={getPlayerInfo}> Player Info </button>
+            </div>
             
         </div>
 
