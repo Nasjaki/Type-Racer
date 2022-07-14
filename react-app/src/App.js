@@ -8,22 +8,7 @@ import Profile from "./Profile";
 import { useState } from "react";
 
 const url = "https://gruppe5.toni-barth.com/";
-async function getPlayerInfo () {
 
-  var player_id = window.player_id;
-
-  let response = await fetch(url + "players/" + player_id, {
-      method: 'GET',
-      headers: {
-          'Content-Type':'application/json',
-      }
-  });
-
-  let json = await response.json();
-  console.log(json);
-
-  return json;
-}
 
 
 window.player_id = 0;

@@ -7,16 +7,15 @@ import playerExists from './Code/playerExists';
 
 const url = "https://gruppe5.toni-barth.com/";
 
-
+//delete all Players
 async function deleteAllPlayers() {
-
+    //gets the players
     let json = await getPlayers();
 
     var i;
     for(i in json){
-        console.log(json[i].id);
         if(json[i] instanceof Object){
-            
+            //Schickt delete anfrage
             await fetch(url + "players/" + json[i].id, {
                 method: 'DELETE',
             });
@@ -29,10 +28,12 @@ async function deleteAllPlayers() {
 
 async function getPlayerInfo () {
 
+    //Holt den eingegebenen Namen 
     var player_name = document.getElementById("text_player_info").value;
+    //Holt die zugehörige ID
     var player_id = await getPlayerId(player_name);
 
-    
+    //Wenn der Spieler existiert
     if (await playerExists(player_name)) {
 
             let response = await fetch(url + "players/" + player_id, {
@@ -51,10 +52,13 @@ async function getPlayerInfo () {
     
 }
 
+//Neuen Spieler erstellen
 async function newPlayer() {
 
+    //String aus Textbox holen
     var name_str = document.getElementById("text_name").value; 
 
+    //Name länger als 2
     if (name_str.length > 2) {
         try {
             let response = await fetch(url + "players/", {
@@ -108,7 +112,7 @@ function Login() {
 
             
             
-            <button onClick={deleteAllPlayers}> Delete All Players </button>
+            
             
         </div>
 
@@ -119,3 +123,4 @@ function Login() {
 
 export default Login;
 
+//115 <button onClick={deleteAllPlayers}> Delete All Players </button> 

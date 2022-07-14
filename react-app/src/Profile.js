@@ -11,6 +11,8 @@ function Profile() {
             </h1>
 
             <p> {window.player_name} {window.player_id} </p>
+            <p> Highscore: </p>
+            <p> Best Speed: </p>
 
             
             
