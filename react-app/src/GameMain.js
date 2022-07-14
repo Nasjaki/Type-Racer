@@ -2,7 +2,7 @@ import './App.css';
 import React, { useEffect } from 'react';   
 import getGames from './Code/getGames';
 import gameExists from './Code/gameExists';
-import { useState } from 'react';
+
 import getGameInfo from './Code/getGameInfo';
 
 import RenderGameList from './Code/RenderGameList';
@@ -32,8 +32,6 @@ async function deleteAllGames() {
 }
 
 
-//playerId statt player zum Patchen -> falsche dokumentation
-
 export default function GameMain() {
 
 
@@ -44,7 +42,7 @@ export default function GameMain() {
             <div className='GameInfo'>
                 
                 <button className = "overlay_button" id = "button_game_data" onClick = {getGameInfo}> Show Game Info </button>
-                <button className = "overlay_button" id = "button_games_delete" onClick = {deleteAllGames}> Delete Games </button>
+                
 
             </div>
             
@@ -57,3 +55,4 @@ export default function GameMain() {
 
 }
 
+//47 <button className = "overlay_button" id = "button_games_delete" onClick = {deleteAllGames}> Delete Games </button>

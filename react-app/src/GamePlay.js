@@ -46,6 +46,7 @@ async function startGame() {
         alert("You cant play alone... Sorry");
     }
 
+
     return json.running;
     
 }
@@ -116,9 +117,9 @@ function GamePlay() {
     }
 
     async function startGameHandle() {
-        if (startGame() === true) {
-            setGameActive("Started");
-        }
+        if (await startGame() == true) {
+            await setGameActive("Started");
+        } 
     }
 
     return ( 
