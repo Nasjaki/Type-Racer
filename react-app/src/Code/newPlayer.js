@@ -1,3 +1,5 @@
+import getPlayerId from "./getPlayerId";
+
 const url = "https://gruppe5.toni-barth.com/";
 
 
@@ -7,8 +9,11 @@ export default async function newPlayer() {
     //String aus Textbox holen
     var name_str = document.getElementById("text_name").value; 
 
-    //Name länger als 2
-    if (name_str.length > 2) {
+    var name_free = await getPlayerId(name_str) === -1;
+    console.log(name_free);
+
+    //Name länger als 2 und Name noch nicht vorhanden
+    if (name_str.length > 2 && name_free) {
         try {
             //Fetch Funktion um Namen auf URL hochzuladen
             let response = await fetch(url + "players/", {
@@ -39,7 +44,12 @@ export default async function newPlayer() {
         }
     } else {
         //"Exception"
-        alert("Not a valid name");
+        if (name_free === false) {
+            alert("Name already taken");
+        } else {
+            alert("Not a valid name");
+        }
+        document.getElementById("text_name").value = "";
         return false;
     }
 
