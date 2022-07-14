@@ -146,3 +146,8 @@
   padding: 2px;
   width: 100%;
 }
+
+.CreateAccount {
+  display: flex;
+  flex-direction: column;
+}

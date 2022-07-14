@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import getGames from "./getGames";
-import getGameInfo from "./getGameInfo"
+import getGames from "./Code/getGames";
+import getPlayerName from "./Code/getPlayerName"
 
 
 const url = "https://gruppe5.toni-barth.com/";
@@ -20,7 +20,6 @@ export default function RenderGameList() {
         let games = await getGames();
 
         //needs to refresh ?
-        console.log(games.length + " " + activeGames.length);
         if (games.length > activeGames.length - 1) {
         
             //add games
@@ -34,13 +33,17 @@ export default function RenderGameList() {
                     }
                     //Not anywhere in the list
                     if (can_add === true) {
-                        //Doesent update in loop TODO
-                        updateActiveGames(activeGames.concat({id:games[i].id,name: await getGameInfo(games[i].id).owner,game_id:games[i].id}));
+                        var owner_id = await games[i].owner;
+                        var owner_name = await getPlayerName(owner_id);
+                        updateActiveGames(activeGames.concat({id:games[i].id,name: owner_name,game_id:games[i].id}));
+                        //One at a time
+                        break;
                     }
                 }
             }
             
             //delete if not in the list
+            /*
             for(var i = 1; i < activeGames.length;i++) {
                 var can_delete = true;
                 for(i2 in games) {
@@ -52,6 +55,7 @@ export default function RenderGameList() {
                     console.log(activeGames[i].game_id + " deleted");
                 }
             }
+            */
         }
 }
 

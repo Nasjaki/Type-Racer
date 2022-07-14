@@ -1,79 +1,14 @@
 import './App.css';
 import { useState } from "react";
+import deleteGame from './Code/deleteGame';
+import getNextWord from './Code/getNextWord';
+import startGame from './Code/startGame';
+import RenderPlayerList from './RenderPlayerList';
+
 
 const url = "https://gruppe5.toni-barth.com/";
 
-async function getWord(word_id) {
-    let response = await fetch(url + "words/", {
-        method: 'GET',
-        headers: {
-            'Content-Type':'application/json',
-        }
-    });
-    let json = await response.json();
 
-    var i = 0;
-    for(i in json){
-        if(json[i]instanceof Object){
-          if (json[i].id == word_id) {
-            return json[i].word;
-          } 
-        }
-    }
-
-}
-
-async function startGame() {
-    
-    var game_id = window.game_id; //Korrekt
-
-    //TODO id = 0
-    let response= await fetch(url + "games/"+ game_id, {
-        method: 'PATCH',
-        headers: {
-            'Content-Type':'application/json',
-        },
-        body: JSON.stringify ({
-            "playerId": window.player_id,
-            "action" : "start"
-        })
-
-    });
-
-    let json = await response.json();
-
-    if (json.players.length === 1) {
-        alert("You cant play alone... Sorry");
-    }
-
-
-    return json.running;
-    
-}
-
-async function getNextWord() {
-
-    var game_id = window.game_id; 
-    let response= await fetch(url + "games/"+ game_id, {
-        method: 'PATCH',
-        headers: {
-            'Content-Type':'application/json',
-        },
-        body: JSON.stringify({
-            "playerId" : window.player_id,
-            "action" : "word"
-        })
-    });
-    
-    
-    let json = await response.json();
-                        //Deutsch plötzlich
-    var currId = json.currentWort;
-    
-    var next_word = await getWord(currId);
-
-    return next_word;
-}
 
 async function scoreWord() {
 
@@ -122,27 +57,33 @@ function GamePlay() {
         } 
     }
 
+    async function leaveGameHandle() {
+        //Set different owner
+        await deleteGame(window.game_id);
+        
+        //go home
+
+        
+    }
+
     return ( 
 
         
         <div className='GameClass'>
-            <h1>
-                Get Ready to Play!
-            </h1>
+            
             
             <div className='Invis'>
                 <button className = "overlay_button" id = "start_game_button" onClick = {startGameHandle}> Start Game</button>
+                
                 <p>Game ID: {window.game_id} {gameActive}</p>
             </div>
             
             <div className='Textbox'>
-                <input id="text_words" type="text" placeholder="Ready"></input>
+                <input id="text_words" type="text" placeholder="Ready" readOnly = {true}></input>
                 <input id = "text_typed" type = "text" onChange={e => testWord(e.target.value)}></input>
             </div>
 
-            <div className='PlayerList'>
-                
-            </div>
+            <RenderPlayerList></RenderPlayerList>
             
             
         </div>
