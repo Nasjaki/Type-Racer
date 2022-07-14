@@ -59,9 +59,14 @@ function App() {
 
         </header>
 
-
+        <div className='footer_container'>
+          <footer>
+            <p>Projekt von: Nils Jonack, Jiaying He und Niklas Stoll</p>
+            <p>Unter Aufsicht von Toni Barth</p>
+          </footer>
+        </div>
       </div>
-      
+ 
       
   );
 }

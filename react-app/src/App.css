@@ -27,6 +27,7 @@
   justify-content: center;
   display: flex;
   flex-direction:row;
+  flex-wrap: wrap;
   align-items:center;
   justify-items:center;
 }
@@ -35,28 +36,15 @@
   justify-content: right;
   display: flex;
   flex-direction: column-reverse;
-  width : 250px;
+  position: absolute;
+  left: 0px;
+  width: 40%;
+  max-width: 250px;
 }
+
+
 
 .top_bar_button {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 17px;
-  border-radius: 8px;
-  margin: 5px;
-}
-
-.top_bar_button:hover {
-  background-color: rgb(33, 85, 33);
-  color: rgb(240, 240, 240);
-}
-
-.overlay_button {
   background-color: #4CAF50;
   border: none;
   color: white;
@@ -69,10 +57,31 @@
   margin: 5px;
 }
 
+.top_bar_button:hover {
+  background-color: rgb(33, 85, 33);
+  color: rgb(240, 240, 240);
+  transition: 250ms ease;
+  box-shadow: inset 0 0 0 2px;
+}
+
+.overlay_button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 8px;
+  margin: 5px;
+}
+
 .overlay_button:hover {
   background-color: rgb(33, 85, 33);
   color: rgb(240, 240, 240);
-  border: 2px solid rgb(113, 113, 113);
+  transition: 250ms ease;
+  box-shadow: inset 0 0 0 2px;
 }
 
 #input_game_id{
@@ -80,6 +89,7 @@
   width: 30%;
   font-size: 20px;
   padding: 12px 32px;
+  min-width: 145px
 }
 
 .invis{
@@ -96,7 +106,7 @@
 }
 
 .GameInfo {
-  margin-top: 200px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items:center;
@@ -104,4 +114,9 @@
 }
 .GameInfo button{
   width: 40%;
+}
+
+.footer{
+  background-color: #171919;
+  color:rgb(33, 85, 33)
 }
