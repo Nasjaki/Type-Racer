@@ -1,5 +1,33 @@
+import getPlayerId from "./Code/getPlayerId";
+import playerExists from "./Code/playerExists";
 
+const url = "https://gruppe5.toni-barth.com/";
 
+async function getPlayerInfo () {
+
+    //Holt den eingegebenen Namen 
+    var player_name = document.getElementById("text_player_info").value;
+    //Holt die zugehörige ID
+    var player_id = await getPlayerId(player_name);
+
+    //Wenn der Spieler existiert
+    if (await playerExists(player_name)) {
+
+            let response = await fetch(url + "players/" + player_id, {
+                method: 'GET',
+                headers: {
+                    'Content-Type':'application/json',
+                }
+            });
+
+            let json = await response.json();
+            document.getElementById("text_player_info").value = "";
+            console.log(json);
+
+            return json;
+    }
+    
+}
 
 function Profile() {
 

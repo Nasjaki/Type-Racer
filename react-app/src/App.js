@@ -1,9 +1,9 @@
 import './App.css';
 
-import Login from "./Login";
 import Main from "./Main";
 import Game from "./Game";
 import Profile from "./Profile";
+import newPlayer from "./Code/newPlayer"
 
 import { useState } from "react";
 
@@ -15,7 +15,15 @@ window.player_id = 0;
 window.game_id = 0;
 window.player_name = "Profile";
 
+
+
+
 function App() {
+  async function newPlayerHandle() {
+    if (await newPlayer() === true) {
+      document.getElementById("button_toggle_profile").innerHTML = window.player_name + " " + window.player_id;
+    }
+  }
 
   //State -> welche Seite gezeigt wird
   const [isToggled, setIsToggled] = useState(0);
@@ -37,10 +45,24 @@ function App() {
         
         <div className='AppBody'>
             {isToggled === 0 && <Main/>}
-            {isToggled === 1 && <Login/>}
             {isToggled === 2 && <Game/>}
             {isToggled === 3 && <Profile/>}
+
+            {(isToggled === 1)?<div className='LoginClass'>
+
+              <h1>
+                  Login to Typeracer
+              </h1>
+
+              <div className="CreateAccount">
+                  <input id="text_name" type="text" placeholder="Name" maxLength={10}></input>
+                  <button onClick={newPlayerHandle}> Create Account </button>
+              </div>
+
+            </div>:null}
         </div>
+
+        
 
         <div className='footer_container'>
           <footer>
