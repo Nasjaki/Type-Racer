@@ -1,15 +1,41 @@
+body {
+  background: linear-gradient(-45deg, #1d03c5,#251a35, #4a0077, #c62263);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+ul{
+  padding: 0;
+  list-style-type: none;
+}
+
 .App {
   text-align: center;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: top;
   font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.AppBody {
+  min-height: 100vh;
   color: white;
 }
 
@@ -80,7 +106,7 @@
 .overlay_button:hover {
   background-color: rgb(33, 85, 33);
   color: rgb(240, 240, 240);
-  transition: 250ms ease;
+  transition: 350ms ease;
   box-shadow: inset 0 0 0 2px;
 }
 
@@ -119,10 +145,15 @@
 .footer_container{
   display: flex;
   justify-content: center;
- 
   background-color: #1a1825;
   color:rgb(159, 159, 159);
   bottom: 0;
+}
+
+.RenderGameList{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .active_games li  {
@@ -130,24 +161,25 @@
   justify-content: center;
   flex-direction: column;
   list-style: none;
-  background-color: gray;
+  background-color: rgb(33, 34, 45);
   font-size: 16px;
-  padding: 2px;
   width: 100%;
 }
 
 .active_games li:hover {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  list-style: none;
-  background-color: rgb(6, 2, 2);
+
+  background-color: rgb(25, 24, 35);
   font-size: 16px;
-  padding: 2px;
-  width: 100%;
+  padding-left: 30px;
+  transition: 350ms ease;
+  box-shadow: inset 0 0 0 3px #363535;
 }
 
-.CreateAccount {
-  display: flex;
-  flex-direction: column;
+@media screen and (max-width: 490px) {
+
+  #button_toggle_profile{
+    display: none;
+  }
+
+  
 }

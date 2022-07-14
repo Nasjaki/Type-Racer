@@ -35,12 +35,12 @@ function App() {
         </div>
       </header>
         
-        <body>
+        <div className='AppBody'>
             {isToggled === 0 && <Main/>}
             {isToggled === 1 && <Login/>}
             {isToggled === 2 && <Game/>}
             {isToggled === 3 && <Profile/>}
-        </body>
+        </div>
 
         <div className='footer_container'>
           <footer>
