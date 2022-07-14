@@ -4,7 +4,6 @@ import Login from "./Login";
 import Main from "./Main";
 import Game from "./Game";
 import Profile from "./Profile";
-import RenderClass from "./Code/RenderClass";
 
 import { useState } from "react";
 
@@ -46,12 +45,12 @@ function App() {
         <button className = "top_bar_button" id = "button_toggle_Login" onClick = {() => setIsToggled(1)}> Login </button>
         <button className = "top_bar_button" id = "button_toggle_Game" onClick = {() => setIsToggled(2)}> Play </button>
         <button className = 'top_bar_button' id = "button_toggle_profile" onClick={() => setIsToggled(3)}>{window.player_name} {window.player_id} </button>
+        
 
         {isToggled === 0 && <Main/>}
         {isToggled === 1 && <Login/>}
         {isToggled === 2 && <Game/>}
         {isToggled === 3 && <Profile/>}
-
 
         
         
