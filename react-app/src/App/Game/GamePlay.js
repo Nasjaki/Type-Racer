@@ -7,7 +7,7 @@ import getGameInfo from '../../Code/getData/getGameInfo';
 import getCurrentWord from '../../Code/getData/getCurrentWord';
 import gameExists from '../../Code/bool/gameExists';
 
-
+import { ReactComponent as CrownAnimation } from "./Crown.svg";
 
 
 const url = "https://gruppe5.toni-barth.com/";
@@ -49,6 +49,7 @@ async function getGameActive() {
 function GamePlay() {
     const [currWord, setCurrWord] = useState("Ready");
     const [gameActive, setGameActive] = useState("Not Started");
+    const [wonGame, setWonGame] = useState(false);
 
     const [count, setCount] = useState(0);
     const [time, setTime] = useState(0);
@@ -59,7 +60,7 @@ function GamePlay() {
             if (input == currWord) {
                 //Score
                 var time_val = Math.round(time * 100) / 100;
-                await scoreWord(time_val * 1000);
+                await scoreWord(time_val);
                 console.log(time_val+ " sec needed");
                 var newWord = await getNextWord();
 
@@ -80,6 +81,10 @@ function GamePlay() {
         } else {
             alert("You must be the Host to start the game");
         }
+    }
+
+    function animationHandle() {
+        setWonGame(true);
     }
 
     
@@ -110,15 +115,23 @@ function GamePlay() {
             
             
             <div className='Invis'>
-                <button className = "overlay_button" id = "start_game_button" onClick = {startGameHandle}> Start Game</button>
+                <button className = "body_buttons" id = "start_game_button" onClick = {startGameHandle}> Start Game</button>
                 
                 <p>Game ID: {window.game_id} {gameActive}</p>
             </div>
             
             <div className='Textbox_gameplay'>
-                <input id="text_words" type="text" placeholder="Start the Game" readOnly = {true}></input>
-                <input id = "text_typed" type = "text" onChange={e => testWord(e.target.value)}></input>
+                <input className = "text_name" id="text_words" type="text" placeholder="Start the Game" readOnly = {true}></input>
+                <input className = "text_name" id = "text_typed" type = "text" onChange={e => testWord(e.target.value)}></input>
             </div>
+
+
+            <button className = "body_buttons" id = "play_animation_button" onClick = {animationHandle}> Play Animation </button>
+
+            <div className='animation_container'>
+                {wonGame?<CrownAnimation></CrownAnimation>:null}
+            </div>
+
 
             <RenderPlayerList></RenderPlayerList>
             

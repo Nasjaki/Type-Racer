@@ -88,14 +88,14 @@ function App() {
               </h1>
 
               <div className="CreateAccount">
-                  <input id="text_name" type="text" placeholder="Name" maxLength={10}></input>
-                  <button className ='overlay_button' id = "button_login"onClick={newPlayerHandle}> Create Account </button> 
+                  <input class = "text_name" id="text_name" type="text" placeholder="Name" maxLength={10}></input>
+                  <button className ='body_buttons' id = "button_login"onClick={newPlayerHandle}> Create Account </button> 
 
               </div>
 
               <div className='LoginAccount'>
-                <input id="text_name_login" type="text" placeholder="Account Name" maxLength={10}></input>
-                <button onClick={loginHandle}> Login </button>
+                <input class = "text_name" id="text_name_login" type="text" placeholder="Account Name" maxLength={10}></input>
+                <button className="body_buttons" onClick={loginHandle}> Login </button>
               </div>
 
             </div>:null}

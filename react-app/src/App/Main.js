@@ -37,6 +37,12 @@ function Main() {
                 <button onClick={showPlayers}> show Players </button>
                 <textarea id="current_players" rows={10} columns={3} readOnly={true} value=""> </textarea>
             </div>
+            
+            <div className="start_text">
+                <p> alsdfjalksdj flkajs dölfkjas lödlf</p>
+                <p> alsdfjalksdj flkajs dölfkjas lödlf</p>
+                <p> alsdfjalksdj flkajs dölfkjas lödlf</p>
+            </div>
 
 
         </div>

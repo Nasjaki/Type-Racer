@@ -49,6 +49,7 @@ ul{
 }
 
 .form_nextTo{
+  margin-top: 2rem;
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
@@ -79,12 +80,14 @@ ul{
   font-size: 16px;
   border-radius: 8px;
   margin: 5px;
+
+  box-shadow: 3px 4px rgba(63, 255, 115, 0.4);
 }
 
 .top_bar_button:hover {
   background-color: rgb(33, 85, 33);
   color: rgb(240, 240, 240);
-  transition: 250ms ease;
+  transition: 350ms ease;
   box-shadow: inset 0 0 0 2px;
 }
 
@@ -115,6 +118,8 @@ ul{
   padding: 12px 32px;
   min-width: 145px;
   max-width: 250px;
+  margin-left: 6px;
+  box-shadow: 3px 4px rgba(0, 0, 0, 0.20);
 }
 
 .invis{
@@ -163,7 +168,7 @@ ul{
   flex-direction: column;
 }
 
-.active_games ul {
+.active_games li{
   display: flex;
   flex-direction: column;
   list-style: none;
@@ -184,18 +189,69 @@ ul{
   padding: 12px 32px;
 }
 
-#text_name{
+.text_name{
   border-radius: 8px;
   width: 30%;
   font-size: 18px;
   padding: 12px 32px;
   min-width: 145px;
   max-width: 250px;
+  box-shadow: 3px 4px rgba(0, 0, 0, 0.20);
 }
+
+#button_login{
+  margin: 15px;
+}
+
+.body_buttons{
+  background-color: #b874c2;
+  border: none;
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 15px;
+  margin: 6px;
+  box-shadow: 2px 3px rgba(109, 36, 149, 0.8);
+}
+.body_buttons:hover{
+  background-color: #5a24b4;
+  color: rgb(240, 240, 240);
+  transition: 350ms ease;
+  box-shadow: inset 0 0 0 3px;
+}
+
+
+.animation_container{
+  animation: animate 2s alternate infinite;
+  margin-right:300px;
+  margin-left:300px;
+  
+}
+
+@keyframes animate{
+  0%{
+      transform: rotateZ(-20deg);
+  }
+  
+  50%{
+    transform: rotateZ(20deg);
+  }
+
+}
+
+
 
 @media screen and (max-width: 490px) {
 
   #button_toggle_profile{
     display: none;
-  } 
+  }
+  body{
+    background: #290c37;
+  }
+
 }
+

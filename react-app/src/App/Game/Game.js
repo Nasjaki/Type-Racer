@@ -71,8 +71,8 @@ function Game() {
 
             <div className='GameButtons'>
                 <div className='form_nextTo'>
-                    <button className = "overlay_button" id = "button_create_game" onClick = {playHandleCreate}> Create Game </button>
-                    <button className = "overlay_button" id = "button_join_game" onClick = {playHandleJoin}> Join Game </button>
+                    <button className = "body_buttons" id = "button_create_game" onClick = {playHandleCreate}> Create Game </button>
+                    <button className = "body_buttons" id = "button_join_game" onClick = {playHandleJoin}> Join Game </button>
                     <input id="input_game_id" type="text" placeholder="Game ID"></input>
                 </div>
                 
@@ -83,14 +83,12 @@ function Game() {
             <h1>
                 Get Ready to Play! {6000 - count} Seconds Left
             </h1>
-            <button className = "overlay_button" id = "leave_game_button" onClick = {leaveGameHandle}> Leave Game</button>
+            <button className = "body_buttons" id = "leave_game_button" onClick = {leaveGameHandle}> Leave Game</button> 
         </div>:null}  
 
             {isToggled === 0 && <GameMain/>}
             {isToggled === 1 && <GamePlay/>}
 
-        
-            
 
         </div>
 
