@@ -91,7 +91,7 @@ export default function RenderPlayerList() {
             setCount((count) => count + 1);
             await AddJoinedPlayers();
             //Has to be equal to upper class
-          }, 100);
+          }, 500);
          return () => clearTimeout(timer);
       });
 

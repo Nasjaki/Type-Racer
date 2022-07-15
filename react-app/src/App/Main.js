@@ -1,11 +1,15 @@
 import "../Css/App.css";
 import getPlayers from "../Code/getData/getPlayers";
+import RenderPlayerList from "../Renders/RenderPlayerList";
+import RenderLeaderboard from "../Renders/RenderLeaderbord";
+import putPlayerValues from "../Code/bool/putPlayerValues";
 
 const url = "https://gruppe5.toni-barth.com/";
 
 
 
 async function showPlayers() {
+
     let players = await getPlayers();
 
     //Initialize String
@@ -19,7 +23,7 @@ async function showPlayers() {
     //Add string to textbox
     document.getElementById("current_players").value = str;
 
-    return players;
+    //return players;
 }
 
 
@@ -33,16 +37,15 @@ function Main() {
             <h1>Welcome to Typeracer!</h1>
             <p>Crush your Enemies with your speed.</p>
 
-            <div className="form_window_right">
-                <button onClick={showPlayers}> show Players </button>
-                <textarea id="current_players" rows={10} columns={3} readOnly={true} value=""> </textarea>
-            </div>
+            
             
             <div className="start_text">
                 <p> alsdfjalksdj flkajs dölfkjas lödlf</p>
                 <p> alsdfjalksdj flkajs dölfkjas lödlf</p>
                 <p> alsdfjalksdj flkajs dölfkjas lödlf</p>
             </div>
+
+            
 
 
         </div>

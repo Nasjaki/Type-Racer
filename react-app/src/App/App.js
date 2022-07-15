@@ -5,10 +5,11 @@ import Game from "./Game/Game";
 import Profile from "./Profile";
 import newPlayer from "../Code/newPlayer"
 
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import playerExists from '../Code/bool/playerExists';
 import getPlayerId from '../Code/getData/getPlayerId';
+import getPlayers from "../Code/getData/getPlayers";
+import deletePlayer from "../Code/Create and delete/deletePlayer";
 
 //API Link
 const url = "https://gruppe5.toni-barth.com/";
@@ -22,6 +23,7 @@ window.player_name = "Profile";
 
 
 function App() {
+
 
   //Hide TopBar when:
   const [count, setCount] = useState(0);
@@ -46,6 +48,7 @@ function App() {
     }
   }
   async function loginHandle() {
+
     var login_name = document.getElementById("text_name_login").value;
     if (await playerExists(login_name)) {
       window.player_name = login_name;
@@ -88,14 +91,14 @@ function App() {
               </h1>
 
               <div className="CreateAccount">
-                  <input class = "text_name" id="text_name" type="text" placeholder="Name" maxLength={10}></input>
+                  <input className = "text_name" id="text_name" type="text" placeholder="Name" maxLength={10}></input>
                   <button className ='body_buttons' id = "button_login"onClick={newPlayerHandle}> Create Account </button> 
 
               </div>
 
               <div className='LoginAccount'>
                 <input class = "text_name" id="text_name_login" type="text" placeholder="Account Name" maxLength={10}></input>
-                <button className="body_buttons" onClick={loginHandle}> Login </button>
+                <button className="body_buttons" id="button_account_login"onClick={loginHandle}> Login </button>
               </div>
 
             </div>:null}

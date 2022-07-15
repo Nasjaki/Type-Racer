@@ -64,6 +64,7 @@ export default function RenderGameList() {
         setTimeout(async () => {
             setCount((count) => count + 1);
             await AddActiveGames();
+
           }, 1000);
 
         

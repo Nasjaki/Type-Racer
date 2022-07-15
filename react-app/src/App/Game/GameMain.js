@@ -7,6 +7,8 @@ import RenderGameList from '../../Renders/RenderGameList';
 
 
 
+
+
 export default function GameMain() {
 
     
@@ -23,6 +25,8 @@ export default function GameMain() {
             </div>
             
             <RenderGameList></RenderGameList>
+
+            
             
         </div>
 

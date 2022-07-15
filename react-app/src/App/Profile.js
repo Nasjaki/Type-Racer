@@ -2,6 +2,9 @@ import "../Css/App.css";
 import getPlayerId from "../Code/getData/getPlayerId";
 import playerExists from "../Code/bool/playerExists";
 
+import RenderLeaderboard from "../Renders/RenderLeaderbord";
+
+
 const url = "https://gruppe5.toni-barth.com/";
 
 async function getPlayerInfo () {
@@ -39,14 +42,25 @@ function Profile() {
                 Profile
             </h1>
 
-            <p> {window.player_name} {window.player_id} </p>
-            <p> Highscore: </p>
-            <p> Best Speed: </p>
+            <div className='profile_survey'>
 
-            <div className="form_nextTo">
-                <input id="text_player_info" type="text" placeholder="Player Info"></input>
-                <button onClick={getPlayerInfo}> Player Info </button>
+                <div className='profile_rows'>
+                    <b>Name:</b>
+                    <p className='profile_stats'> {window.player_name} {window.player_id} </p>
+                </div>
+                <div className='profile_rows'>
+                    <b> Highscore: </b>
+                    <p className='profile_stats'>Platzhalter</p>
+                </div>
+                <div className='profile_rows'>
+                    <b> Best Speed: </b>
+                    <p className='profile_stats'>Platzhalter</p>
+                </div>
+
             </div>
+
+            
+
             
         </div>
 
@@ -56,3 +70,12 @@ function Profile() {
 }
 
 export default Profile;
+
+/*
+<div className="form_nextTo">
+                <input id="text_player_info" type="text" placeholder="Player Info"></input>
+                <button onClick={getPlayerInfo}> Player Info </button>
+            </div>
+
+
+*/
