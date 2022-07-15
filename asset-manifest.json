@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/Type-Racer/static/css/main.0dd5c493.css",
-    "main.js": "/Type-Racer/static/js/main.e7aa645c.js",
+    "main.css": "/Type-Racer/static/css/main.5993cefd.css",
+    "main.js": "/Type-Racer/static/js/main.0ccfe4ff.js",
     "static/js/787.b701888c.chunk.js": "/Type-Racer/static/js/787.b701888c.chunk.js",
+    "static/media/Crown.svg": "/Type-Racer/static/media/Crown.af38a443815fa7fbb82cb82ba93d55ed.svg",
     "index.html": "/Type-Racer/index.html",
-    "main.0dd5c493.css.map": "/Type-Racer/static/css/main.0dd5c493.css.map",
-    "main.e7aa645c.js.map": "/Type-Racer/static/js/main.e7aa645c.js.map",
+    "main.5993cefd.css.map": "/Type-Racer/static/css/main.5993cefd.css.map",
+    "main.0ccfe4ff.js.map": "/Type-Racer/static/js/main.0ccfe4ff.js.map",
     "787.b701888c.chunk.js.map": "/Type-Racer/static/js/787.b701888c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0dd5c493.css",
-    "static/js/main.e7aa645c.js"
+    "static/css/main.5993cefd.css",
+    "static/js/main.0ccfe4ff.js"
   ]
 }
