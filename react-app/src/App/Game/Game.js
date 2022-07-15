@@ -33,7 +33,7 @@ function Game() {
     }
     //Leave handle
     async function leaveGameHandle() {
-        //Set different owner
+        //delete Game
         await deleteGame(window.game_id);
         
         //go home
