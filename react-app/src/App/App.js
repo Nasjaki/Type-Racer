@@ -6,6 +6,7 @@ import Profile from "./Profile";
 import newPlayer from "../Code/newPlayer"
 
 import { useState } from "react";
+import { useEffect } from "react";
 import playerExists from '../Code/bool/playerExists';
 import getPlayerId from '../Code/getData/getPlayerId';
 
@@ -21,6 +22,24 @@ window.player_name = "Profile";
 
 
 function App() {
+
+  //Hide TopBar when:
+  const [count, setCount] = useState(0);
+  const [showBar, setShowBar] = useState(true);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+        setCount((count) => count + 1);
+
+        //When ingame
+        if (window.game_id === 0) {
+          setShowBar(true);
+        } else {
+          setShowBar(false);
+        }
+      }, 1000);
+     return () => clearTimeout(timer);
+  });
+
   async function newPlayerHandle() {
     if (await newPlayer() === true) {
       document.getElementById("button_toggle_profile").innerHTML = window.player_name + " " + window.player_id;
@@ -47,14 +66,14 @@ function App() {
 
       <header className="App-header">
         
-        <div className='top_bar'>
+        {showBar?<div className='top_bar'>
 
           <button className = "top_bar_button" id = "button_toggle_main" onClick = {() => setIsToggled(0)}> Startpage </button>
           <button className = "top_bar_button" id = "button_toggle_Login" onClick = {() => setIsToggled(1)}> Login </button>
           <button className = "top_bar_button" id = "button_toggle_Game" onClick = {() => setIsToggled(2)}> Play </button>
           <button className = 'top_bar_button' id = "button_toggle_profile" onClick={() => setIsToggled(3)}>{window.player_name} {window.player_id} </button>
 
-        </div>
+        </div>:null}
       </header>
         
         <div className='AppBody'>

@@ -23,6 +23,7 @@ export default async function createGame() {
 
         let json = await response.json();
         window.game_id = json.id;
+        console.log(window.game_id);
         
         return true;
     } else {

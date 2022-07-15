@@ -15,6 +15,9 @@ const url = "https://gruppe5.toni-barth.com/";
 
 
 async function scoreWord(time = 0) {
+
+    //TODO Cant score the same word twice
+
     if (time === 0) return false;
 
     var game_id = window.game_id; 
@@ -30,7 +33,7 @@ async function scoreWord(time = 0) {
             "action" : "score"
         })
     });
-    console.log("Scored");
+    //console.log("Scored");
 }
 
 async function getGameActive() {
@@ -55,8 +58,9 @@ function GamePlay() {
         if (gameActive === "Started") {
             if (input == currWord) {
                 //Score
-                await scoreWord(time);
-                console.log(time);
+                var time_val = Math.round(time * 100) / 100;
+                await scoreWord(time_val * 1000);
+                console.log(time_val+ " sec needed");
                 var newWord = await getNextWord();
 
                 setCurrWord(newWord);
@@ -73,14 +77,16 @@ function GamePlay() {
     async function startGameHandle() {
         if (await startGame() == true) {
             await setGameActive("Started");
-        } 
+        } else {
+            alert("You must be the Host to start the game");
+        }
     }
 
     
     useEffect(() => {
         const timer = setTimeout(async () => {
             setCount((count) => count + 1);
-            setTime((time) => time + 1)
+            setTime((time) => time + 0.1)
             
             //Shows if the game is active
             setGameActive(await getGameActive());
@@ -93,7 +99,7 @@ function GamePlay() {
                 document.getElementById("text_words").placeholder = word;
             }
 
-          }, 1000);
+          }, 100);
         return () => clearTimeout(timer);
     });
 
