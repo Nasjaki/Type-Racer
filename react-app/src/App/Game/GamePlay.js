@@ -137,11 +137,10 @@ function GamePlay() {
         return () => clearTimeout(timer);
     });
 
+    //Effect for both timers bc they are not async
     useEffect(() => {
-        const timer2 = setTimeout(async () => {
-            
-
-            //Started when textbox not standart
+        const timer2 = setTimeout(() => {
+            //Starts when textbox not standart
             var str = document.getElementById("text_words").placeholder;
             if(str !== "Start the Game" && gameActive === "Started") {
                 set_game_time((game_time) => game_time + 0.1);
