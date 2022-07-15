@@ -7,6 +7,8 @@ import createGame from './Code/createGame';
 import deleteGame from './Code/deleteGame';
 
 import { useState } from "react";
+import { useEffect } from 'react';
+import gameExists from './Code/gameExists';
 
 
 
@@ -35,7 +37,27 @@ function Game() {
         
         //go home
         setIsToggled(0);  
+        window.game_id = 0;
     }
+
+    const [count, setCount] = useState(0);
+    //Check if game is still active else leave game
+    useEffect(() => {
+        const timer = setTimeout(async () => {
+            //called every second
+            setCount((count) => count + 1);
+            if (await gameExists(window.game_id) !== true && window.game_id !== 0) {
+                console.log("game closed");
+                //go home
+                setIsToggled(0);
+                //Start 10 Minutes from beginning
+                setCount(0);
+                window.game_id = 0;
+            }
+
+          }, 1000);
+         return () => clearTimeout(timer);
+    });
 
     return ( 
         <div className='GameClass'>
@@ -57,7 +79,7 @@ function Game() {
 
         {isToggled?<div className='GamePlayHidden'>
             <h1>
-                Get Ready to Play!
+                Get Ready to Play! {6000 - count} Seconds Left
             </h1>
             <button className = "overlay_button" id = "leave_game_button" onClick = {leaveGameHandle}> Leave Game</button>
         </div>:null}  

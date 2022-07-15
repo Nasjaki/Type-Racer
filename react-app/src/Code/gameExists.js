@@ -3,6 +3,8 @@ import getGames from "./getGames";
 
 //game exists
 async function gameExists(game_id) {
+
+if (game_id > 0) {
     const json = await getGames();
     var i;
     for(i in json) {
@@ -12,7 +14,12 @@ async function gameExists(game_id) {
             }
         }
     }
+
+    //doesnt exist
     return false;
+} else {
+    //Error
+}
 }
 
 export default gameExists;

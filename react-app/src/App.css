@@ -183,3 +183,19 @@ ul{
 
   
 }
+
+.RenderGameList {
+  width: auto;
+}
+
+.RenderPlayerList {
+  width: auto;
+}
+
+.Textbox_gameplay {
+  
+  justify-content: middle;
+  align-items:center;
+  display: flex;
+  flex-direction: column;
+}

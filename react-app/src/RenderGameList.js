@@ -18,6 +18,7 @@ export default function RenderGameList() {
     async function AddActiveGames() {
         
         let games = await getGames();
+        
 
         //needs to refresh ?
         if (games.length > activeGames.length - 1) {
@@ -64,6 +65,8 @@ export default function RenderGameList() {
             setCount((count) => count + 1);
             await AddActiveGames();
           }, 1000);
+
+        
       });
 
     return (

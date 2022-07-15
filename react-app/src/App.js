@@ -70,7 +70,8 @@ function App() {
 
               <div className="CreateAccount">
                   <input id="text_name" type="text" placeholder="Name" maxLength={10}></input>
-                  <button onClick={newPlayerHandle}> Create Account </button>
+                  <button className ='overlay_button' id = "button_login"onClick={newPlayerHandle}> Create Account </button> 
+
               </div>
 
               <div className='LoginAccount'>
