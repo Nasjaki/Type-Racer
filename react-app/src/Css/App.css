@@ -29,7 +29,6 @@ ul{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: top;
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -37,6 +36,7 @@ ul{
 .AppBody {
   min-height: 100vh;
   color: white;
+  font-size: 1.5rem;
 }
 
 .App-link {
@@ -44,7 +44,6 @@ ul{
 }
 
 .form {
-  justify-content: top;
   display: flex;
   flex-direction: column;
 }
@@ -52,7 +51,6 @@ ul{
 .form_nextTo{
   justify-content: center;
   display: flex;
-  flex-direction:row;
   flex-wrap: wrap;
   align-items:center;
   justify-items:center;
@@ -113,9 +111,10 @@ ul{
 #input_game_id{
   border-radius: 8px;
   width: 30%;
-  font-size: 20px;
+  font-size: 18px;
   padding: 12px 32px;
-  min-width: 145px
+  min-width: 145px;
+  max-width: 250px;
 }
 
 .invis{
@@ -132,70 +131,71 @@ ul{
 }
 
 .GameInfo {
-  margin-top: 20px;
+  margin-top: 80px;
   display: flex;
   flex-direction: column;
   align-items:center;
   justify-items:center;
 }
 .GameInfo button{
-  width: 40%;
+  width: 15rem;
 }
 
 .footer_container{
   display: flex;
   justify-content: center;
-  background-color: #1a1825;
-  color:rgb(159, 159, 159);
+  background-color: rgba(26, 24, 37, 70%);
+  color:rgb(240, 240, 240);
   bottom: 0;
 }
-
-.RenderGameList{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.RenderPlayerList {
+  width: auto;
 }
 
-.active_games li  {
+.Textbox_gameplay {
+  align-items:center;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+}
+.RenderGameList{
+  align-items:center;
+  display: flex;
+  flex-direction: column;
+}
+
+.active_games ul {
+  display: flex;
   flex-direction: column;
   list-style: none;
-  background-color: rgb(33, 34, 45);
+  background-color: rgba(33, 34, 45, 80%);
   font-size: 16px;
-  width: 100%;
 }
 
 .active_games li:hover {
 
   background-color: rgb(25, 24, 35);
-  font-size: 16px;
-  padding-left: 30px;
+  font-size: 20px;
   transition: 350ms ease;
-  box-shadow: inset 0 0 0 3px #363535;
+  box-shadow: inset 0 0 0 2px;
+}
+
+.CreateAccount {
+  margin-top: 40px;
+  padding: 12px 32px;
+}
+
+#text_name{
+  border-radius: 8px;
+  width: 30%;
+  font-size: 18px;
+  padding: 12px 32px;
+  min-width: 145px;
+  max-width: 250px;
 }
 
 @media screen and (max-width: 490px) {
 
   #button_toggle_profile{
     display: none;
-  }
-
-  
-}
-
-.RenderGameList {
-  width: auto;
-}
-
-.RenderPlayerList {
-  width: auto;
-}
-
-.Textbox_gameplay {
-  
-  justify-content: middle;
-  align-items:center;
-  display: flex;
-  flex-direction: column;
+  } 
 }
