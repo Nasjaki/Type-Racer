@@ -2,6 +2,8 @@ import getGames from "./getGames";
 
 const url = "https://gruppe5.toni-barth.com/";
 
+
+//Delete all games
 export default async function deleteAllGames() {
     let json = await getGames();
 

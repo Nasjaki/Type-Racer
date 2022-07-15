@@ -2,6 +2,8 @@ import gameExists from "./bool/gameExists";
 
 const url = "https://gruppe5.toni-barth.com/";
 
+
+//stops a game
 export default async function stopGame() {
     
     var game_id = window.game_id; 

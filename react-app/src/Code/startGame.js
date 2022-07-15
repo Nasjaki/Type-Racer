@@ -1,6 +1,8 @@
 
 const url = "https://gruppe5.toni-barth.com/";
 
+
+//Sets game running to true
 export default async function startGame() {
     
     var game_id = window.game_id; 

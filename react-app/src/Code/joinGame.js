@@ -3,7 +3,7 @@ import gameExists from "./bool/gameExists";
 
 const url = "https://gruppe5.toni-barth.com/";
 
-//join
+//joins the game by textbox
 export default async function joinGame() {
 
     var game_id = document.getElementById("input_game_id").value;

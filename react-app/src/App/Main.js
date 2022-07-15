@@ -40,9 +40,20 @@ function Main() {
             
             
             <div className="start_text">
-                <p> alsdfjalksdj flkajs dölfkjas lödlf</p>
-                <p> alsdfjalksdj flkajs dölfkjas lödlf</p>
-                <p> alsdfjalksdj flkajs dölfkjas lödlf</p>
+                <p> Sie können mithilfe der Buttons in der oberen Leiste</p>
+                <p> durch die verschiedenen Tabs steuern; wenn noch nicht </p>
+                <p> geschehen, sollten Sie sich zunächst einmal einloggen :)</p>
+                <p></p>
+                <p>Danach können Sie beliebig Spielen beitreten oder selber welche erstellen.</p>
+                <p>|</p>
+                <p>|</p>
+                <p>|</p>
+                <p>|</p>
+                <p>|</p>
+                <p>|</p>
+                <p>|</p>
+                <p>|</p>
+                <p>V</p>
             </div>
 
             

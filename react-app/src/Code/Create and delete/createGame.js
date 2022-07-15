@@ -2,7 +2,7 @@
 
 const url = "https://gruppe5.toni-barth.com/";
 
-//create
+//creates a new game
 export default async function createGame() {
     
     var id = window.player_id;

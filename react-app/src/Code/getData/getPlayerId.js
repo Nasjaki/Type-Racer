@@ -1,5 +1,7 @@
 import getPlayers from "../getData/getPlayers";
 
+
+//Gets the player id by name
 async function getPlayerId(player_name) {
 
     let players = await getPlayers();

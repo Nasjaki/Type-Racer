@@ -1,5 +1,7 @@
 const url = "https://gruppe5.toni-barth.com/";
 
+
+//gets all active games
 async function getGames() {
 
     try {

@@ -1,6 +1,8 @@
 
 const url = "https://gruppe5.toni-barth.com/";
 
+
+//gets the string of the word by id
 export default async function getWord(word_id) {
     let response = await fetch(url + "words/", {
         method: 'GET',

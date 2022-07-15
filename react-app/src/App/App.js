@@ -97,7 +97,7 @@ function App() {
               </div>
 
               <div className='LoginAccount'>
-                <input class = "text_name" id="text_name_login" type="text" placeholder="Account Name" maxLength={10}></input>
+                <input className = "text_name" id="text_name_login" type="text" placeholder="Account Name" maxLength={10}></input>
                 <button className="body_buttons" id="button_account_login"onClick={loginHandle}> Login </button>
               </div>
 

@@ -49,9 +49,11 @@ async function getGameActive() {
 
 
 function GamePlay() {
+    //max timers
     const max_game_time_s = 60;
     const max_game_time_ms = max_game_time_s * 1000;
 
+    //states
     const [currWord, setCurrWord] = useState("Ready");
     const [gameActive, setGameActive] = useState("Not Started");
     const [wonGame, setWonGame] = useState(false);
@@ -59,6 +61,7 @@ function GamePlay() {
     const [word_time, set_word_time] = useState(0);
     const [game_time, set_game_time] = useState(0);
 
+    //Test if word is correct
     async function testWord(input) {
         //Get official current word
         if (gameActive === "Started") {
@@ -81,6 +84,7 @@ function GamePlay() {
         }
     }
 
+    //Starts the game
     async function startGameHandle() {
         if (await startGame() == true) {
             setGameActive("Started");
@@ -92,10 +96,6 @@ function GamePlay() {
         } else {
             alert("You must be the Host to start the game");
         }
-    }
-
-    function animationHandle() {
-        setWonGame(true);
     }
 
     const [count, setCount] = useState(0);

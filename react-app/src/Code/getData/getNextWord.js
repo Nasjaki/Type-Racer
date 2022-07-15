@@ -2,6 +2,8 @@ import getWord from "../getData/getWord";
 
 const url = "https://gruppe5.toni-barth.com/";
 
+
+//Activates the next word
 export default async function getNextWord() {
 
     var game_id = window.game_id; 

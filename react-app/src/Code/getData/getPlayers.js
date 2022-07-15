@@ -1,6 +1,7 @@
 
 const url = "https://gruppe5.toni-barth.com/";
 
+//gets all players
 async function getPlayers() {
 
     let response = await fetch(url + "players/", {
