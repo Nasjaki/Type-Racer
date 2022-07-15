@@ -14,7 +14,7 @@ export default async function getGameInfo(game_id = window.game_id) {
         
         return json;
     } else {
-        console.log("Game closed");
+        //game closed
         return -1;
     }
 }
