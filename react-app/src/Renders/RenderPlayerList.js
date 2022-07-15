@@ -90,6 +90,7 @@ export default function RenderPlayerList() {
         const timer = setTimeout(async () => {
             setCount((count) => count + 1);
             await AddJoinedPlayers();
+            //Has to be equal to upper class
           }, 1000);
          return () => clearTimeout(timer);
       });

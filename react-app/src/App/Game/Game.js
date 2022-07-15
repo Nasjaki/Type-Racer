@@ -33,6 +33,7 @@ function Game() {
     }
     //Leave handle
     async function leaveGameHandle() {
+        console.log("leave");
         //delete Game
         await deleteGame(window.game_id);
         
@@ -81,7 +82,7 @@ function Game() {
 
         {isToggled?<div className='GamePlayHidden'>
             <h1>
-                Get Ready to Play! {6000 - count} Seconds Left
+                Get Ready to Play!
             </h1>
             <button className = "body_buttons" id = "leave_game_button" onClick = {leaveGameHandle}> Leave Game</button> 
         </div>:null}  

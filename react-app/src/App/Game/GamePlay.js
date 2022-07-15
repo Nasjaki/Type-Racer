@@ -6,6 +6,7 @@ import RenderPlayerList from '../../Renders/RenderPlayerList';
 import getGameInfo from '../../Code/getData/getGameInfo';
 import getCurrentWord from '../../Code/getData/getCurrentWord';
 import gameExists from '../../Code/bool/gameExists';
+import stopGame from '../../Code/stopGame';
 
 import { ReactComponent as CrownAnimation } from "./Crown.svg";
 
@@ -47,30 +48,36 @@ async function getGameActive() {
 
 
 function GamePlay() {
+    const max_game_time_s = 60;
+    const max_game_time_ms = max_game_time_s * 1000;
+
     const [currWord, setCurrWord] = useState("Ready");
     const [gameActive, setGameActive] = useState("Not Started");
     const [wonGame, setWonGame] = useState(false);
 
     const [count, setCount] = useState(0);
-    const [time, setTime] = useState(0);
+
+    const [word_time, set_word_time] = useState(0);
+    const [game_time, set_game_time] = useState(0);
 
     async function testWord(input) {
         //Get official current word
         if (gameActive === "Started") {
             if (input == currWord) {
                 //Score
-                var time_val = Math.round(time * 100) / 100;
+                console.log("word_time: " + word_time);
+                var time_val = Math.round(word_time * 100) / 100;
                 await scoreWord(time_val);
-                console.log(time_val+ " sec needed");
-                var newWord = await getNextWord();
 
+                var newWord = await getNextWord();
                 setCurrWord(newWord);
                 
+                //Reset boxes
                 document.getElementById("text_words").placeholder = newWord;
                 document.getElementById("text_typed").value = "";
 
-                //timer reset
-                setTime(0);
+                //word timer reset
+                set_word_time(0);
             } 
         }
     }
@@ -91,21 +98,58 @@ function GamePlay() {
     useEffect(() => {
         const timer = setTimeout(async () => {
             setCount((count) => count + 1);
-            setTime((time) => time + 0.1)
-            
-            //Shows if the game is active
+
+            //Shows if the game is active as Text
             setGameActive(await getGameActive());
-
-
-            var word = await getCurrentWord();
             
-            if (word !== undefined) {
-                setCurrWord(word);
-                document.getElementById("text_words").placeholder = word;
+            if (gameActive === "Started") {
+                var word = await getCurrentWord();
+
+                if (word !== undefined) {
+                    setCurrWord(word);
+                    document.getElementById("text_words").placeholder = word;
+                }
             }
 
-          }, 100);
+            //Times up ?
+            if ((max_game_time_s - game_time) <= 0) {
+                //Stop game
+                await stopGame();
+                setGameActive("Not Started");
+
+                //Reset Textbox
+                document.getElementById("text_words").placeholder = "Start the Game";
+
+                //Results
+                var winnerJson = await getGameInfo(window.game_id);
+                if (window.player_id === winnerJson.winner) {
+                    setWonGame(true);
+                }
+                
+                set_game_time(0);
+            } else {
+                if (gameActive === "Started") {
+                    setWonGame(false);
+                }
+            }
+
+        }, 100);
         return () => clearTimeout(timer);
+    });
+
+    useEffect(() => {
+        const timer2 = setTimeout(async () => {
+            
+
+            //Started when textbox not standart
+            var str = document.getElementById("text_words").placeholder;
+            if(str !== "Start the Game" && gameActive === "Started") {
+                set_game_time((game_time) => game_time + 0.1);
+                set_word_time((word_time) => word_time + 0.1);
+            }
+
+        },100);
+        return () => clearTimeout(timer2);
     });
 
     return ( 
@@ -117,7 +161,7 @@ function GamePlay() {
             <div className='Invis'>
                 <button className = "body_buttons" id = "start_game_button" onClick = {startGameHandle}> Start Game</button>
                 
-                <p>Game ID: {window.game_id} {gameActive}</p>
+                <p>Game ID: {window.game_id} {gameActive} {Math.round((max_game_time_s - game_time) * 10) / 10}s left</p>
             </div>
             
             <div className='Textbox_gameplay'>
@@ -126,11 +170,9 @@ function GamePlay() {
             </div>
 
 
-            <button className = "body_buttons" id = "play_animation_button" onClick = {animationHandle}> Play Animation </button>
-
-            <div className='animation_container'>
-                {wonGame?<CrownAnimation></CrownAnimation>:null}
-            </div>
+            {wonGame?<div className='animation_container'>
+                <CrownAnimation></CrownAnimation>
+            </div>:null}
 
 
             <RenderPlayerList></RenderPlayerList>
