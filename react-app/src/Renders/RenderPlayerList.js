@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
-import gameExists from "./Code/gameExists";
-import getGameInfo from "./Code/getGameInfo";
-import getPlayerName from "./Code/getPlayerName"
+import getGameInfo from "../Code/getData/getGameInfo";
+import getPlayerName from "../Code/getData/getPlayerName"
 
-
-const url = "https://gruppe5.toni-barth.com/";
 
 function JoinedPlayers(props) {
     return <li>{props.name}_{props.id} Score: {props.score}</li>;
@@ -52,27 +49,20 @@ export default function RenderPlayerList() {
         
         
 
-        //Refresh score
-        
-        
+            //Refresh score
+
             //for every list element
-            
-            for(var i = 0; i < joinedPlayers.length;i++) {
-
+            for(i = 0; i < joinedPlayers.length;i++) {
                 var listScore = parseInt(joinedPlayers[i].score);
-                var onlineScore = parseInt(players_score[i]);
-                
-                if (onlineScore !== listScore) {
-                    
-                    
-                    //delete Listelemt so it gets added with right score
-                    var player_id = players[i];
-                    //console.log(player_id);
-                    //console.log(joinedPlayers);
+                var onlineScore = parseInt(players_score[i]); 
 
+                //console.log(listScore + " " + onlineScore + " " + i);
+                if (onlineScore !== listScore) {
+
+                    player_id = joinedPlayers[i].id; //No problem with order of list
+                    //Update Map
                     const newList = joinedPlayers.map((listElement) => {
                         if (player_id === listElement.id) {
-                            //console.log(listElement);
                             const updatedScore = {
                                 ...listElement,
                                 score: onlineScore,
@@ -82,28 +72,24 @@ export default function RenderPlayerList() {
                         }
                         return listElement;
                     });
-
-                    //console.log(newList);
+                    //Updates the new ListElement
                     updateJoinedPlayers(newList);
                 }
             }
         
     
     } else {
-        console.log("Zeit Abgelaufen");
-        //Leave
+        //Error 
+        //TODO
     }
         
 }
 
+    //Render every second
     useEffect(() => {
         const timer = setTimeout(async () => {
-            //called every second
-
             setCount((count) => count + 1);
             await AddJoinedPlayers();
-            //console.log(count);
-
           }, 1000);
          return () => clearTimeout(timer);
       });

@@ -1,5 +1,6 @@
-import getPlayerId from "./Code/getPlayerId";
-import playerExists from "./Code/playerExists";
+import "../Css/App.css";
+import getPlayerId from "../Code/getData/getPlayerId";
+import playerExists from "../Code/bool/playerExists";
 
 const url = "https://gruppe5.toni-barth.com/";
 

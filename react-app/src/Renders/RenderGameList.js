@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import getGames from "./Code/getGames";
-import getPlayerName from "./Code/getPlayerName"
+import getGames from "../Code/getData/getGames";
+import getPlayerName from "../Code/getData/getPlayerName"
 
 
 const url = "https://gruppe5.toni-barth.com/";

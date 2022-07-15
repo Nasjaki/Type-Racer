@@ -1,4 +1,4 @@
-import getPlayers from "./getPlayers";
+import getPlayers from "../getData/getPlayers";
 
 async function getPlayerId(player_name) {
 

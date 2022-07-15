@@ -1,14 +1,15 @@
-import './App.css';
+import '../../Css/App.css';
 
 import GamePlay from "./GamePlay";
 import GameMain from "./GameMain";
-import joinGame from './Code/joinGame';
-import createGame from './Code/createGame';
-import deleteGame from './Code/deleteGame';
+import joinGame from '../../Code/joinGame';
+import createGame from '../../Code/Create and delete/createGame';
+import deleteGame from '../../Code/Create and delete/deleteGame';
+import gameExists from '../../Code/bool/gameExists';
 
 import { useState } from "react";
 import { useEffect } from 'react';
-import gameExists from './Code/gameExists';
+
 
 
 

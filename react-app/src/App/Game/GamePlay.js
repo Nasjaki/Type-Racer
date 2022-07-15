@@ -1,11 +1,11 @@
-import './App.css';
+import '../../Css/App.css';
 import { useState, useEffect } from "react";
-import getNextWord from './Code/getNextWord';
-import startGame from './Code/startGame';
-import RenderPlayerList from './RenderPlayerList';
-import getGameInfo from './Code/getGameInfo';
-import getCurrentWord from './Code/getCurrentWord';
-import gameExists from './Code/gameExists';
+import getNextWord from '../../Code/getData/getNextWord';
+import startGame from '../../Code/startGame';
+import RenderPlayerList from '../../Renders/RenderPlayerList';
+import getGameInfo from '../../Code/getData/getGameInfo';
+import getCurrentWord from '../../Code/getData/getCurrentWord';
+import gameExists from '../../Code/bool/gameExists';
 
 
 

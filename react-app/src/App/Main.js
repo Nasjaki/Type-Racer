@@ -1,5 +1,5 @@
-import './App.css';
-import getPlayers from './Code/getPlayers';
+import "../Css/App.css";
+import getPlayers from "../Code/getData/getPlayers";
 
 const url = "https://gruppe5.toni-barth.com/";
 

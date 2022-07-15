@@ -1,4 +1,4 @@
-import getPlayerId from "./getPlayerId";
+import getPlayerId from "./getData/getPlayerId";
 
 const url = "https://gruppe5.toni-barth.com/";
 

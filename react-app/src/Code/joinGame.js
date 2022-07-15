@@ -1,4 +1,4 @@
-import gameExists from "./gameExists";
+import gameExists from "./bool/gameExists";
 
 
 const url = "https://gruppe5.toni-barth.com/";
@@ -32,7 +32,8 @@ if (game_id !== "" && await gameExists(game_id) === true && window.player_id !==
         window.game_id = game_id;
 
         let json = await response.json();
-        console.log(json.players);
+        console.log("joined");
+        
 
     return true;
 } else {

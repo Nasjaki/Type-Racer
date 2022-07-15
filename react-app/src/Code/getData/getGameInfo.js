@@ -1,4 +1,4 @@
-import gameExists from "./gameExists";
+import gameExists from "../bool/gameExists";
 
 const url = "https://gruppe5.toni-barth.com/";
 

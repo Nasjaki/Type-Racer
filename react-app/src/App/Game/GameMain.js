@@ -1,10 +1,10 @@
-import './App.css';
+import '../../Css/App.css';
 import React, { useEffect } from 'react';   
 
 
-import getGameInfo from './Code/getGameInfo';
+import getGameInfo from '../../Code/getData/getGameInfo';
 
-import RenderGameList from './RenderGameList';
+import RenderGameList from '../../Renders/RenderGameList';
 import GamePlay from './GamePlay';
 
 

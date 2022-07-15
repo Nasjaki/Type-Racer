@@ -1,13 +1,13 @@
-import './App.css';
+import "../Css/App.css";
 
 import Main from "./Main";
-import Game from "./Game";
+import Game from "./Game/Game";
 import Profile from "./Profile";
-import newPlayer from "./Code/newPlayer"
+import newPlayer from "../Code/newPlayer"
 
 import { useState } from "react";
-import playerExists from './Code/playerExists';
-import getPlayerId from './Code/getPlayerId';
+import playerExists from '../Code/bool/playerExists';
+import getPlayerId from '../Code/getData/getPlayerId';
 
 //API Link
 const url = "https://gruppe5.toni-barth.com/";

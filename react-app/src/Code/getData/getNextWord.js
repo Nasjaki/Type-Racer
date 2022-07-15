@@ -1,4 +1,4 @@
-import getWord from "./getWord";
+import getWord from "../getData/getWord";
 
 const url = "https://gruppe5.toni-barth.com/";
 
