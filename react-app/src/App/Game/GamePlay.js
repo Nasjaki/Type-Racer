@@ -14,7 +14,8 @@ const url = "https://gruppe5.toni-barth.com/";
 
 
 
-async function scoreWord() {
+async function scoreWord(time = 0) {
+    if (time === 0) return false;
 
     var game_id = window.game_id; 
 
@@ -25,7 +26,7 @@ async function scoreWord() {
         },
         body: JSON.stringify({
             "playerId" : window.player_id,
-            "time":200,
+            "time": time,
             "action" : "score"
         })
     });
@@ -54,8 +55,8 @@ function GamePlay() {
         if (gameActive === "Started") {
             if (input == currWord) {
                 //Score
-                await scoreWord();
-
+                await scoreWord(time);
+                console.log(time);
                 var newWord = await getNextWord();
 
                 setCurrWord(newWord);
@@ -109,7 +110,7 @@ function GamePlay() {
             </div>
             
             <div className='Textbox_gameplay'>
-                <input id="text_words" type="text" placeholder="Ready" readOnly = {true}></input>
+                <input id="text_words" type="text" placeholder="Start the Game" readOnly = {true}></input>
                 <input id = "text_typed" type = "text" onChange={e => testWord(e.target.value)}></input>
             </div>
 

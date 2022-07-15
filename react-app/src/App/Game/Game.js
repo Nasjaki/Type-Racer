@@ -49,6 +49,7 @@ function Game() {
             setCount((count) => count + 1);
             if (await gameExists(window.game_id) !== true && window.game_id !== 0) {
                 console.log("game closed");
+                console.log(count);
                 //go home
                 setIsToggled(0);
                 //Start 10 Minutes from beginning
