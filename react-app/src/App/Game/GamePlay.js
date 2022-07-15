@@ -39,6 +39,7 @@ async function scoreWord(time = 0) {
 
 async function getGameActive() {
     let json = await getGameInfo();
+
     if (json.running === true) {
         return "Started";
     } else {
@@ -54,8 +55,6 @@ function GamePlay() {
     const [currWord, setCurrWord] = useState("Ready");
     const [gameActive, setGameActive] = useState("Not Started");
     const [wonGame, setWonGame] = useState(false);
-
-    const [count, setCount] = useState(0);
 
     const [word_time, set_word_time] = useState(0);
     const [game_time, set_game_time] = useState(0);
@@ -84,7 +83,12 @@ function GamePlay() {
 
     async function startGameHandle() {
         if (await startGame() == true) {
-            await setGameActive("Started");
+            setGameActive("Started");
+            set_game_time(0);
+            set_word_time(0);
+
+            //Set scores 0
+            
         } else {
             alert("You must be the Host to start the game");
         }
@@ -94,62 +98,67 @@ function GamePlay() {
         setWonGame(true);
     }
 
-    
+    const [count, setCount] = useState(0);
     useEffect(() => {
         const timer = setTimeout(async () => {
             setCount((count) => count + 1);
 
-            //Shows if the game is active as Text
+
             setGameActive(await getGameActive());
-            
-            if (gameActive === "Started") {
-                var word = await getCurrentWord();
 
-                if (word !== undefined) {
-                    setCurrWord(word);
-                    document.getElementById("text_words").placeholder = word;
+            //Time is not up (Game Active)
+            if ((max_game_time_s - game_time) >= 0 && gameActive === "Started") {
+                //Timer Game and Word
+                var str = document.getElementById("text_words").placeholder;
+                if(str !== "Start the Game" && gameActive === "Started") {
+                    set_game_time((game_time) => game_time + 1);
+                    set_word_time((word_time) => word_time + 1);
                 }
-            }
 
-            //Times up ?
-            if ((max_game_time_s - game_time) <= 0) {
-                //Stop game
-                await stopGame();
-                setGameActive("Not Started");
+                
+                //Set word
+                if (gameActive === "Started") {
+                    var word = await getCurrentWord();
+                    if (word !== undefined) {
+                        setCurrWord(word);
+                        document.getElementById("text_words").placeholder = word;
+                    }
+                }
+
+                setWonGame(false);
+
+            } else {
+                //Time is up
 
                 //Reset Textbox
-                document.getElementById("text_words").placeholder = "Start the Game";
+                var element = document.getElementById("text_words");
+                if (element !== undefined) {
+                    element.placeholder = "Start the Game";
+                }
+
+                //Stop game if game is still active
+                if (await getGameActive() === "Started") {
+                    await stopGame();
+                } 
 
                 //Results
                 var winnerJson = await getGameInfo(window.game_id);
                 if (window.player_id === winnerJson.winner) {
                     setWonGame(true);
                 }
-                
+
+                //Reset Timer 
                 set_game_time(0);
-            } else {
-                if (gameActive === "Started") {
-                    setWonGame(false);
-                }
+
             }
 
-        }, 100);
+        }, 500);
         return () => clearTimeout(timer);
     });
 
-    //Effect for both timers bc they are not async
-    useEffect(() => {
-        const timer2 = setTimeout(() => {
-            //Starts when textbox not standart
-            var str = document.getElementById("text_words").placeholder;
-            if(str !== "Start the Game" && gameActive === "Started") {
-                set_game_time((game_time) => game_time + 0.1);
-                set_word_time((word_time) => word_time + 0.1);
-            }
 
-        },100);
-        return () => clearTimeout(timer2);
-    });
+    //Effect for both timers bc they are not async
+    const [count2, setCount2] = useState(0);
 
     return ( 
 
