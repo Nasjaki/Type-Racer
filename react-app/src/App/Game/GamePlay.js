@@ -86,7 +86,7 @@ function GamePlay() {
 
     //Starts the game
     async function startGameHandle() {
-        if (await startGame() == true) {
+        if (await startGame() === true) {
             setGameActive("Started");
             set_game_time(0);
             set_word_time(0);
@@ -132,7 +132,7 @@ function GamePlay() {
 
                 //Reset Textbox
                 var element = document.getElementById("text_words");
-                if (element !== undefined) {
+                if (element !== null) {
                     element.placeholder = "Start the Game";
                 }
 

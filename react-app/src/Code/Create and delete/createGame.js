@@ -21,7 +21,7 @@ export default async function createGame() {
         //console.log(response);
         console.log("Game Created");
 
-        let json = await response.json();
+        
         window.game_id = json.id;
         console.log(window.game_id);
         
